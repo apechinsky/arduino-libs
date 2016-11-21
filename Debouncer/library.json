@@ -1,11 +1,11 @@
 {
-    "name": "mhz19",
+    "name": "Debouncer",
 
-    "keywords": "mh-z19,co2",
+    "keywords": "debounce, bounce",
 
-    "description": "MH-Z19 CO2 sensor library",
+    "description": "General purpose bounce protection library. Accepts any provided value and perform delay free bounce protection logic.",
 
-    "include": "mzh19",
+    "include": "Debouncer",
 
     "repository": {
         "type": "git",

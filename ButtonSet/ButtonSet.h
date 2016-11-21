@@ -38,7 +38,7 @@ public:
   /**
    * Destructor.
    */
-  virtual ~ButtonSet()
+  virtual ~ButtonSet();
 
   /**
    * Creates an instance with analog values. Values should be computed or obtained experimentally.
