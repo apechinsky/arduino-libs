@@ -37,7 +37,7 @@ public:
      * mhz19.begin(serial);
      */
     void begin(Stream &stream);
-}   
+   
     /**
      * Init sensor with RX, TX pins. Implementation creates SoftwareSerial.
      */
