@@ -1,11 +1,11 @@
 {
-    "name": "ButtonSet",
+    "name": "DigitalDevice",
 
-    "keywords": "button, set, debounce, bounce",
+    "keywords": "digital, pin, device",
 
-    "description": "ButtonSet handles multiple buttons on a single analog pin.",
+    "description": "DigitalDevice is wrapper object for a digital pin. Encapsulates pin, mode and device name in a single object.",
 
-    "include": "ButtonSet",
+    "include": "DigitalDevice",
 
     "repository": {
         "type": "git",
