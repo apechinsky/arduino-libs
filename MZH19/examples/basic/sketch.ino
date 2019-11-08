@@ -10,9 +10,11 @@
 #include <MHZ19.h>
 
 MHZ19 mhz19;
+MHZ19 mhz19a;
 
 void setup() {
     mhz19.begin(A0, A1, 9600);
+    mhz19a.begin(&Serial);
 }
 
 void loop() {
