@@ -1,7 +1,5 @@
 #!/bin/bash
 
-baseUrl=https://raw.githubusercontent.com/apechinsky/arduino-libs/master
-
 libs="
 ButtonSet
 CircularBuffer
@@ -19,6 +17,14 @@ ThingSpeak
 for lib in $libs; do
 
     echo "Registering library '$lib'"
-    pio package publish $baseUrl/$lib/library.json
+    version=$(jq -r '.version' $lib/library.json)
+
+    echo "packaging $lib/$version"
+    pio package pack $lib
+
+    package="$lib-$version.tar.gz"
+
+    echo "publishing $package"
+    pio package publish --notify $package
 
 done
