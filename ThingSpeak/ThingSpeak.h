@@ -32,7 +32,7 @@ private:
 
     const char *apiKey;
 
-    MyHttpClient *httpClient;
+    HttpClient *httpClient;
     
 };
 

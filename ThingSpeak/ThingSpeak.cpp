@@ -6,7 +6,7 @@ const char HTTP[] PROGMEM = "http";
 const char HTTPS[] PROGMEM = "https";
 const char URL_PATTERN[] PROGMEM = "%S://api.thingspeak.com/update?api_key=%s";
 
-ThingSpeak::ThingSpeak(const char *apiKey, MyHttpClient *httpClient) {
+ThingSpeak::ThingSpeak(const char *apiKey, HttpClient *httpClient) {
     this->apiKey = apiKey;
     this->httpClient = httpClient;
 }

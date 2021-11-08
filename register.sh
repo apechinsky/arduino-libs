@@ -19,6 +19,6 @@ ThingSpeak
 for lib in $libs; do
 
     echo "Registering library '$lib'"
-    pio lib register $baseUrl/$lib/library.json
+    pio package publish $baseUrl/$lib/library.json
 
 done
