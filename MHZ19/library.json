@@ -5,7 +5,7 @@
 
     "description": "MH-Z19 CO2 sensor library",
 
-    "include": "MZH19",
+    "include": "MHZ19",
 
     "repository": {
         "type": "git",
