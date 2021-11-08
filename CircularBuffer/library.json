@@ -1,18 +1,18 @@
 {
-    "name": "DigitalDevice",
+    "name": "CircularBuffer",
 
-    "keywords": "digital, pin, device",
+    "keywords": "circular, buffer",
 
-    "description": "DigitalDevice is wrapper object for a digital pin. Encapsulates pin, mode and device name in a single object.",
+    "description": "Circular buffer implementation",
 
-    "include": "DigitalDevice",
+    "include": "CircularBuffer",
 
     "repository": {
         "type": "git",
         "url": "https://github.com/apechinsky/arduino-libs.git"
     },
 
-    "version": "0.1.0",
+    "version": "0.2.0",
 
     "license": "Apache-2.0",
 
