@@ -18,6 +18,8 @@ public:
 
     ~CircularBuffer();
 
+    int indexOf(const char *string);
+
     /**
      * Checks if buffer contains specified char array.
      */
@@ -56,15 +58,21 @@ public:
     bool isEmpty();
 
     /**
-     * Print buffer state.
+     * Print buffer content.
      */
     void print();
+
+    /**
+     * Print internal state.
+     */
+    void printState();
 
     /**
      * Print char.
      */
     void print(char c);
 
+    String getBetween(const char *start, const char *end);
 
 private:
 

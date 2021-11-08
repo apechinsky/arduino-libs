@@ -31,29 +31,63 @@ CircularBuffer::~CircularBuffer() {
     delete[] buffer;
 }
 
-bool CircularBuffer::contains(const char *string) {
+int CircularBuffer::indexOf(const char *string) {
     long stringSize = strlen(string);
 
+    int foundStringIndex = -1;
     int bufferIndex = head;
     int stringIndex = 0;
 
     for (int i = 0; i < size() && stringIndex < stringSize; i++) {
 
         if (string[stringIndex] == buffer[bufferIndex]) {
+            if (stringIndex == 0) {
+                foundStringIndex = bufferIndex;
+            }
+
             stringIndex++;
         }
         else {
             stringIndex = 0;
+            foundStringIndex = -1;
         }
 
         bufferIndex = roll(bufferIndex);
     }
 
-    return stringIndex == stringSize;
+    return stringIndex == stringSize ? foundStringIndex : -1;
+}
+
+bool CircularBuffer::contains(const char *string) {
+    return indexOf(string) != -1;
 }
 
 bool CircularBuffer::contains(const String &string) {
     return contains(string.c_str());
+}
+
+String CircularBuffer::getBetween(const char *start, const char *end) {
+    int startIndex = indexOf(start);
+
+    if (startIndex == -1) {
+        return "error1";
+    }
+
+    int startLength = strlen(start);
+    startIndex += startLength;
+
+    int endIndex = indexOf(end);
+
+    if (startIndex != -1 && endIndex != -1 && startIndex <= endIndex) {
+        char* temp = new char[size()];
+        memset(temp, 0, size());
+
+        for (int i = 0; startIndex < endIndex; i++) {
+            temp[i] = buffer[startIndex++];
+        }
+        return String(temp);
+    }
+    return "error2";
 }
 
 void CircularBuffer::add(char c) {
@@ -99,6 +133,14 @@ bool CircularBuffer::isEmpty() {
 }
 
 void CircularBuffer::print() {
+    for (int i = 0; i < size(); i++) {
+        int index = (head + i) % bufferSize;
+        Serial.print(buffer[index]);
+    }
+    Serial.println();
+}
+
+void CircularBuffer::printState() {
 
 #ifdef ARDUINO
     Serial.print(F("Buffer ["));
