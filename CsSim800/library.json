@@ -1,22 +1,13 @@
 {
     "name": "CsSim800",
-
-    "keywords": "gsm, gprs, sim800",
-
+    "version": "0.1.0",
     "description": "SIM800 GSM module controller. AT command wrapper.",
-
-    "include": "CsSim800",
-
+    "keywords": "gsm, gprs, sim800",
     "repository": {
         "type": "git",
         "url": "https://github.com/apechinsky/arduino-libs.git"
     },
-
-    "version": "0.1.0",
-
     "license": "Apache-2.0",
-
     "frameworks": "arduino",
-
     "platforms": "atmelavr"
 }

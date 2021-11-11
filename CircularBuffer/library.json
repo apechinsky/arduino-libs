@@ -1,22 +1,13 @@
 {
     "name": "CircularBuffer",
-
-    "keywords": "circular, buffer",
-
+    "version": "0.2.0",
     "description": "Circular buffer implementation",
-
-    "include": "CircularBuffer",
-
+    "keywords": "circular, buffer",
     "repository": {
         "type": "git",
         "url": "https://github.com/apechinsky/arduino-libs.git"
     },
-
-    "version": "0.2.0",
-
     "license": "Apache-2.0",
-
     "frameworks": "arduino",
-
     "platforms": "atmelavr"
 }

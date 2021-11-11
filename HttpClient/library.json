@@ -1,22 +1,13 @@
 {
     "name": "HttpClient",
-
-    "keywords": "http, client, network",
-
+    "version": "0.1.0",
     "description": "Simple HTTP client interface",
-
-    "include": "HttpClient",
-
+    "keywords": "http, client, network",
     "repository": {
         "type": "git",
         "url": "https://github.com/apechinsky/arduino-libs.git"
     },
-
-    "version": "0.1.0",
-
     "license": "Apache-2.0",
-
     "frameworks": "arduino",
-
     "platforms": "atmelavr"
 }

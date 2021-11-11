@@ -1,22 +1,13 @@
 {
     "name": "DigitalDevice",
-
-    "keywords": "digital, pin, device",
-
+    "version": "0.1.0",
     "description": "DigitalDevice is wrapper object for a digital pin. Encapsulates pin, mode and device name in a single object.",
-
-    "include": "DigitalDevice",
-
+    "keywords": "digital, pin, device",
     "repository": {
         "type": "git",
         "url": "https://github.com/apechinsky/arduino-libs.git"
     },
-
-    "version": "0.1.0",
-
     "license": "Apache-2.0",
-
     "frameworks": "arduino",
-
     "platforms": "atmelavr"
 }

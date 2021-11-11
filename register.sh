@@ -5,8 +5,7 @@ ButtonSet
 CircularBuffer
 Debouncer
 DigitalDevice
-LICENSE
-MZH19
+MHZ19
 MemoryFree
 AtCommandDevice
 HttpClient
@@ -24,7 +23,9 @@ for lib in $libs; do
 
     package="$lib-$version.tar.gz"
 
-    echo "publishing $package"
-    pio package publish --notify $package
+    tar -tf $package
+
+    # echo "publishing $package"
+    # pio package publish --notify $package
 
 done

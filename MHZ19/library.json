@@ -1,22 +1,13 @@
 {
     "name": "MHZ19",
-
-    "keywords": "mh-z19,co2",
-
+    "version": "0.1.0",
     "description": "MH-Z19 CO2 sensor library",
-
-    "include": "MHZ19",
-
+    "keywords": "mh-z19,co2",
     "repository": {
         "type": "git",
         "url": "https://github.com/apechinsky/arduino-libs.git"
     },
-
-    "version": "0.1.0",
-
     "license": "Apache-2.0",
-
     "frameworks": "arduino",
-
     "platforms": "atmelavr"
 }
