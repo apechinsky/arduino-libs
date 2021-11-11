@@ -13,19 +13,24 @@ CsSim800
 ThingSpeak
 "
 
+scriptDir=$(cd $(dirname $0); pwd)
+
+buildDir="$scriptDir/build"
+
+mkdir -p "$buildDir" 
+
 for lib in $libs; do
 
     echo "Registering library '$lib'"
     version=$(jq -r '.version' $lib/library.json)
 
     echo "packaging $lib/$version"
-    pio package pack $lib
+    # pio package pack $lib
+    pio package pack -o "$buildDir" $lib 
 
-    package="$lib-$version.tar.gz"
+    package="$buildDir/$lib-$version.tar.gz"
 
-    tar -tf $package
-
-    # echo "publishing $package"
-    # pio package publish --notify $package
+    echo "publishing $package"
+    pio package publish --notify $package
 
 done

@@ -1,6 +1,6 @@
 {
     "name": "AtCommandDevice",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "description": "Serial stream wrapper for simplifying interation with AT command devices",
     "keywords": "at,command",
     "repository": {

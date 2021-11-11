@@ -1,6 +1,6 @@
 {
     "name": "Debouncer",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "description": "General purpose bounce protection library. Accepts any provided value and perform delay free bounce protection logic.",
     "keywords": "debounce, bounce",
     "repository": {

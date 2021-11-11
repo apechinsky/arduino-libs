@@ -1,6 +1,6 @@
 {
     "name": "ThingSpeak",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "description": "ThingSpeak service client. Simplifies posting data to ThingSpeak channels.",
     "keywords": "thingspeadk",
     "repository": {
@@ -9,5 +9,13 @@
     },
     "license": "Apache-2.0",
     "frameworks": "arduino",
-    "platforms": "atmelavr"
+    "platforms": "atmelavr",
+    "dependencies":
+    [
+        {
+            "owner": "apechinsky",
+            "name": "HttpClient",
+            "version": "0.3.0"
+        }
+    ]
 }

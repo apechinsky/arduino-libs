@@ -1,6 +1,6 @@
 {
     "name": "CsSim800",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "description": "SIM800 GSM module controller. AT command wrapper.",
     "keywords": "gsm, gprs, sim800",
     "repository": {
@@ -9,5 +9,21 @@
     },
     "license": "Apache-2.0",
     "frameworks": "arduino",
-    "platforms": "atmelavr"
+    "platforms": "atmelavr",
+    "dependencies":
+    [
+        {
+            "owner": "apechinsky",
+            "name": "AtCommandDevice",
+            "version": "0.3.0"
+        },
+        {
+            "owner": "apechinsky",
+            "name": "HttpClient",
+            "version": "0.3.0"
+        },
+        {
+            "name": "StreamDebugger"
+        }
+    ]
 }

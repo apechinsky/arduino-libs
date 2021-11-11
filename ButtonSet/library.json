@@ -1,6 +1,6 @@
 {
     "name": "ButtonSet",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "description": "ButtonSet handles multiple buttons on a single analog pin.",
     "keywords": "button, set, debounce, bounce",
     "repository": {
@@ -9,5 +9,13 @@
     },
     "license": "Apache-2.0",
     "frameworks": "arduino",
-    "platforms": "atmelavr"
+    "platforms": "atmelavr",
+    "dependencies":
+    [
+        {
+            "owner": "apechinsky",
+            "name": "Debouncer",
+            "version": "0.3.0"
+        }
+    ]
 }

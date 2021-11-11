@@ -1,6 +1,6 @@
 {
     "name": "DigitalDevice",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "description": "DigitalDevice is wrapper object for a digital pin. Encapsulates pin, mode and device name in a single object.",
     "keywords": "digital, pin, device",
     "repository": {

@@ -1,6 +1,6 @@
 {
     "name": "MHZ19",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "description": "MH-Z19 CO2 sensor library",
     "keywords": "mh-z19,co2",
     "repository": {
