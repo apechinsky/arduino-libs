@@ -1,0 +1,21 @@
+{
+    "name": "Button",
+    "version": "0.1.0",
+    "description": "General purpose button. Based on Debouncer library.",
+    "keywords": "button, debounce, bounce",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/apechinsky/arduino-libs.git"
+    },
+    "license": "Apache-2.0",
+    "frameworks": "arduino",
+    "platforms": "atmelavr",
+    "dependencies":
+    [
+        {
+            "owner": "apechinsky",
+            "name": "Debouncer",
+            "version": "0.3.0"
+        }
+    ]
+}
