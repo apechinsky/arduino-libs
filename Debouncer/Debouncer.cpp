@@ -12,23 +12,32 @@
 #include "Debouncer.h"
 
 
-Debouncer::Debouncer(int bounceTime) {
-    this->bounceTime = bounceTime;
+Debouncer::Debouncer(unsigned long bounceDuration) {
     this->value = 0;
-    this->valueTimestamp = 0;
+    this->bounceDuration = bounceDuration;
+    this->lastValue = 0;
+    this->lastValueTimestamp = 0;
 }
 
 bool Debouncer::update(int newValue) {
 
-    bool valueChanged = newValue != value;
-    bool bounceCompleted = millis() - valueTimestamp > bounceTime;
-
-    if (valueChanged && bounceCompleted) {
-        value = newValue;
-        valueTimestamp = millis();
-        return true;
+    if (newValue != lastValue) {
+        lastValueTimestamp = millis();
     }
-    return false;
+
+    bool changed = false;
+
+    if (millis() - lastValueTimestamp > bounceDuration) {
+        changed = newValue != value;
+
+        if (changed) {
+           value = newValue;
+        }
+    }
+
+    lastValue = newValue;
+
+    return changed;
 }
 
 int Debouncer::get() {

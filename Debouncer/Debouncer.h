@@ -31,9 +31,9 @@ public:
    /**
     * Constructor.
     *
-    * @param bounceTime bounce time
+    * @param bounceDuration bounce period duration
     */
-    Debouncer(int bounceTime);
+    Debouncer(unsigned long bounceDuration);
 
    /**
     * Update value.
@@ -51,13 +51,28 @@ public:
      */
     int get();
 
-  
 private:
-  int bounceTime;
 
-  int value;
+    /**
+     * Current debounced value.
+     */
+    int value;
 
-  unsigned long valueTimestamp;
+    /**
+     * Bounce period duration in millis.
+     */
+    unsigned long bounceDuration;
+
+    /**
+     * The latest value obtained via update() method.
+     * Used internally to track bounce period.
+     */
+    int lastValue;
+
+    /**
+     * Timestamp of lastValue.
+     */
+    unsigned long lastValueTimestamp;
 
 };
 
