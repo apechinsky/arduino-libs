@@ -1,6 +1,6 @@
 /*
-  SmartButton library
-  Copyright (c) 2018 Anton Pechinsky.  All rights reserved.
+  Button library
+  Copyright (c) 2023 Anton Pechinsky.  All rights reserved.
 
   This library is free software; you can redistribute it and/or
   modify it under the terms of the Apache License v2.0.
@@ -11,13 +11,24 @@
 #ifndef Button_h
 #define Button_h
 
-// #include <inttypes.h>
 #include "Debouncer.h"
 
 /**
- * Button library recognizing click, multiple clicks and long press.
- * Each type of event is handle with handle function.
+ * Button class simplifies handling button events.
  *
+ * The class recognizes the following event types:
+ *  * press
+ *  * release
+ *  * click
+ *  * long press
+ *
+ * Each event type is handled by a dedicated callback function.
+ * See the documentation for the corresponding setOnXXX() function.
+ *
+ * Important! Some events are fired immediately, while others are not (see function documentation).
+ * Developers should be cautious when handling both onClicked and onMultipleClicked events.
+ * The onClicked event is fired each time a click is detected, but the onMultipleClicked
+ * event is fired only once when the user stops clicking.
  */
 class Button {
 
@@ -27,7 +38,8 @@ public:
      * Constructs button set.
      *
      * @param pin analog pin number
-     * @param pullUp
+     * @param pullUp a flag indicated that button pin is pulled up and the class
+     *  should register press event on LOW level.
      */
     Button(byte pin, bool pullUp);
 
@@ -46,32 +58,61 @@ public:
      */
     bool isPressed();
 
-    typedef void (*OnClickedHandler)(void);
+    typedef void (*OnPressedHandler)(int count);
 
-    typedef void (*OnMultipleClickingHandler)(int count);
+    typedef void (*OnReleasedHandler)(int count);
+
+    typedef void (*OnClickedHandler)(int count);
 
     typedef void (*OnMultipleClickedHandler)(int count);
 
     typedef void (*OnLongPressedHandler)(int duration);
 
+    /**
+     * Define maximal duration between button clicks which will be
+     * recognized as multiple click series.
+     *
+     * The click counter is reset if the duration exceeds the specified value.
+     *
+     * @param value max duration in milliseconds (default: 400ms)
+     */
+    void setMaxDurationBetweenClicks(int value);
 
     /**
-     * Define single click handler function.
+     * Define the minimum duration between a press and release event that is recognized as a long press.
+     *
+     * @param value min duration in milliseconds (default: 600ms)
+     */
+    void setMinLongPressDuration(int value);
+
+    /**
+     * Define button 'press' handler function.
+     * Handler is called imediately.
+     */
+    void setOnPressed(OnPressedHandler handler);
+
+    /**
+     * Define button 'release' handler function.
+     * Handler is called imediately.
+     */
+    void setOnReleased(OnReleasedHandler handler);
+
+    /**
+     * Define button 'click' handler function.
+     * Handler is called imediately.
      */
     void setOnClicked(OnClickedHandler handler);
 
     /**
-     * Define handler which is called during user clicking a button
-     */
-    void setOnMultipleClicking(OnMultipleClickingHandler handler);
-
-    /**
-     * Define handler which is called when user finished clicking a button.
+     * Define button multiple click handler function.
+     * Handler is called after some time is passed after last button release event.
      */
     void setOnMultipleClicked(OnMultipleClickedHandler handler);
 
     /**
-     * Define handler which is called when user released button after long press.
+     * Define long press button handler function.
+     * Handler is called imediately after _single_ release button event.
+     * The handler won't be called if a long press occurs in a multiple click series.
      */
     void setOnLongPressed(OnLongPressedHandler handler);
 
@@ -82,8 +123,13 @@ private:
 
     bool pullUp;
 
+    int maxDurationBetweenClicks;
+
+    long minLongPressDuration;
+
     Debouncer debouncer;
 
+    int pressCount;
 
     unsigned long lastPressTime;
 
@@ -91,31 +137,45 @@ private:
 
     bool pressed;
 
-    int pressCount;
+    /**
+     * Checks if button has stopped clicked.
+     *
+     * Used to identify a moment when it's time to handle double, tripple, and
+     * more click series.
+     */
+    bool isClickSeriesCompleted(unsigned long eventTime);
 
+    void processStateChange(bool pressed, unsigned long eventTime);
 
-    void processStateChange(bool pressed);
+    void processPressEvent(unsigned long eventTime);
+
+    void processReleaseEvent(unsigned long eventTime);
 
     int getDuration(unsigned long start, unsigned long end);
 
 
-    OnClickedHandler onClickedHandler = NULL;
+    OnPressedHandler onPressedHandler = NULL;
 
-    OnMultipleClickingHandler onMultipleClickingHandler = NULL;
+    OnReleasedHandler onReleasedHandler = NULL;
+
+    OnClickedHandler onClickedHandler = NULL;
 
     OnMultipleClickedHandler onMultipleClickedHandler = NULL;
 
     OnLongPressedHandler onLongPressedHandler = NULL;
 
 
-    void onClicked();
+    void onPressed(int count);
 
-    void onMultipleClicking(int count);
+    void onReleased(int count);
+
+    void onClicked(int count);
 
     void onMultipleClicked(int count);
 
     void onLongPressed(int duration);
 
+    void printState(unsigned long eventTime);
 };
 
 #endif

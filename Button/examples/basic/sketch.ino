@@ -12,19 +12,24 @@
  * Demonstrate basic button usage.
  */ 
 
+/**
+ * Demonstrate basic button usage.
+ */
+
 #include <Button.h>
 
 #define BUTTON_PIN 3
 
-#define DEFAULT_BOUNCE_TIME 100
-
 Button button(BUTTON_PIN, true);
 
 void setup() {
-    button.setOnClicked(onButtonClick);
-    button.setOnMultipleClicking(onButtonClicking);
-    button.setOnMultipleClicked(onButtonClicked);
-    button.setOnLongPressed(onButtonLongPressed);
+    Serial.begin(9600);
+
+    button.setOnPressed(onPressed);
+    button.setOnReleased(onReleased);
+    button.setOnClicked(onClicked);
+    button.setOnMultipleClicked(onMultipleClicked);
+    button.setOnLongPressed(onLongPressed);
 }
 
 void loop() {
@@ -33,22 +38,29 @@ void loop() {
     delay(10);
 }
 
-void onButtonClick() {
-    Serial.println("button click");
-}
-
-void onButtonClicking(int count) {
-    Serial.print("button clicking ");
+void onPressed(int count) {
+    Serial.print("pressed. count: ");
     Serial.println(count);
 }
 
-void onButtonClicked(int count) {
-    Serial.print("button clicked ");
+void onReleased(int count) {
+    Serial.print("released. count: ");
     Serial.println(count);
 }
 
-void onButtonLongPressed(int duration) {
-    Serial.print("button clicked ");
+void onClicked(int count) {
+    Serial.print("clicked. clount: ");
     Serial.println(count);
 }
 
+void onMultipleClicked(int count) {
+    Serial.print("multiple clicked. count: ");
+    Serial.println(count);
+    Serial.println("-----------------------");
+}
+
+void onLongPressed(int duration) {
+    Serial.print("long pressed. duration: ");
+    Serial.println(duration);
+    Serial.println("-----------------------");
+}

@@ -1,8 +1,8 @@
 {
     "name": "Button",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "General purpose button. Based on Debouncer library.",
-    "keywords": "button, debounce, bounce",
+    "keywords": "button, debounce, bounce, press, release, click, multiple clicks, long press",
     "repository": {
         "type": "git",
         "url": "https://github.com/apechinsky/arduino-libs.git"

@@ -1,6 +1,16 @@
 # Button library
 
-General purpose button with debounce handler.
+General purpose button recognizing multiple button events.
+
+Functions:
+
+* press event detection
+* release event detection
+* click event detection
+* multiple click event detection
+* long press event detection
+* debounce handling via Debounce library
+* pull up pin support
 
 Usage:
 
@@ -10,10 +20,11 @@ Button button(pin, true);
 
 void setup() {
     ...
-    button.setOnClicked(onButtonClick);
-    button.setOnMultipleClicking(onButtonClicking);
-    button.setOnMultipleClicked(onButtonClicked);
-    button.setOnLongPressed(onButtonLongPressed);
+    button.setOnPressed(onPressed);
+    button.setOnReleased(onReleased);
+    button.setOnClicked(onClicked);
+    button.setOnMultipleClicked(onMultipleClicked);
+    button.setOnLongPressed(onLongPressed);
     ...
 }
 
@@ -23,22 +34,22 @@ void loop() {
     ...
 }
 
-void onButtonClick() {
-    Serial.println("button click");
+void onPressed(int count) {
+    Serial.print("pressed");
 }
 
-void onButtonClicking(int count) {
-    Serial.print("button clicking ");
-    Serial.println(count);
+void onReleased(int count) {
+    Serial.print("released");
 }
 
-void onButtonClicked(int count) {
-    Serial.print("button clicked ");
-    Serial.println(count);
+void onClicked(int count) {
+    Serial.print("clicked");
 }
 
-void onButtonLongPressed(int duration) {
-    Serial.print("button clicked ");
-    Serial.println(count);
+void onMultipleClicked(int count) {
+    Serial.print("clicked multiple");
+}
+void onLongPressed(int duration) {
+    Serial.print("long press");
 }
  ```
