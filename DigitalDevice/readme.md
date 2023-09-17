@@ -21,7 +21,7 @@ void loop() {
 
 With DigitalDevice
 ```
-DigitalDevice lamp(7, "Lamp);
+DigitalDevice lamp(7, "Lamp");
 
 void loop() {
 
